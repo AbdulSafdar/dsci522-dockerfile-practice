@@ -1,0 +1,225 @@
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+
+(base) dhcp-128-189-194-178:dsci522-dockerfile-practice abdulsafdar$ conda activate conda-lock
+
+EnvironmentNameNotFound: Could not find conda environment: conda-lock
+You can list all discoverable environments with `conda info --envs`.
+
+
+
+(base) dhcp-128-189-194-178:dsci522-dockerfile-practice abdulsafdar$ conda-lock --kind explicit  --file en
+vironment.yml -p linux-64
+Traceback (most recent call last):
+  File "/Users/abdulsafdar/miniforge3/bin/conda-lock", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/click/core.py", line 1157, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/click/core.py", line 1688, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/click/decorators.py", line 33, in new_func
+    return f(get_current_context(), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/conda_lock/conda_lock.py", line 1403, in lock
+    lock_func(
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/conda_lock/conda_lock.py", line 1111, in run_lock
+    make_lock_files(
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/conda_lock/conda_lock.py", line 337, in make_lock_files
+    lock_spec = make_lock_spec(
+                ^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/conda_lock/src_parser/__init__.py", line 91, in make_lock_spec
+    lock_specs = _parse_source_files(src_files, platforms)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/conda_lock/src_parser/__init__.py", line 71, in _parse_source_files
+    desired_envs.append(parse_environment_file(src_file, platforms))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/conda_lock/src_parser/environment_yaml.py", line 118, in parse_environment_file
+    env_yaml_data = yaml.safe_load(content)
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/yaml/__init__.py", line 125, in safe_load
+    return load(stream, SafeLoader)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/yaml/__init__.py", line 81, in load
+    return loader.get_single_data()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/yaml/constructor.py", line 49, in get_single_data
+    node = self.get_single_node()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/yaml/composer.py", line 36, in get_single_node
+    document = self.compose_document()
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/yaml/composer.py", line 55, in compose_document
+    node = self.compose_node(None, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/yaml/composer.py", line 84, in compose_node
+    node = self.compose_mapping_node(anchor)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/yaml/composer.py", line 133, in compose_mapping_node
+    item_value = self.compose_node(node, item_key)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/yaml/composer.py", line 82, in compose_node
+    node = self.compose_sequence_node(anchor)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/yaml/composer.py", line 110, in compose_sequence_node
+    while not self.check_event(SequenceEndEvent):
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/yaml/parser.py", line 98, in check_event
+    self.current_event = self.state()
+                         ^^^^^^^^^^^^
+  File "/Users/abdulsafdar/miniforge3/lib/python3.11/site-packages/yaml/parser.py", line 392, in parse_block_sequence_entry
+    raise ParserError("while parsing a block collection", self.marks[-1],
+yaml.parser.ParserError: while parsing a block collection
+  in "<unicode string>", line 4, column 3:
+      - conda-forge
+      ^
+expected <block end>, but found '?'
+  in "<unicode string>", line 6, column 3:
+      dependencies:
+      ^
+
+(base) dhcp-128-189-194-178:dsci522-dockerfile-practice abdulsafdar$ conda-lock --kind explicit --file env
+ironment.yml -p linux-64
+Locking dependencies for ['linux-64']...
+INFO:conda_lock.conda_solver:linux-64 using specs ['pandas 2.2.2.*', 'pandera 0.20.4.*', 'python 3.11.*', 'pip *']
+Rendering lockfile(s) for linux-64...
+WARNING: installation of pip dependencies from explicit lockfiles is only supported by the 'conda-lock install' and 'micromamba install' commands. Other tools may silently ignore them. For portability, we recommend using the newer unified lockfile format (i.e. removing the --kind=explicit argument.
+ - Install lock using : conda create --name YOURENV --file conda-linux-64.lock
+
+(base) dhcp-128-189-194-178:dsci522-dockerfile-practice abdulsafdar$ ls
+Dockerfile              README.md               environment.yml
+LICENSE                 conda-linux-64.lock
+
+(base) dhcp-128-189-194-178:dsci522-dockerfile-practice abdulsafdar$ docker build --tag testing_cmds .
+[+] Building 93.7s (5/5) FINISHED                                                                                                                            docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                                         0.0s
+ => => transferring dockerfile: 87B                                                                                                                                          0.0s
+ => [internal] load metadata for quay.io/jupyter/minimal-notebook:afe30f0c9ad8                                                                                               1.7s
+ => [internal] load .dockerignore                                                                                                                                            0.0s
+ => => transferring context: 2B                                                                                                                                              0.0s
+ => [1/1] FROM quay.io/jupyter/minimal-notebook:afe30f0c9ad8@sha256:ea438114425ea79d893ec610460e636040270bdd79dba4a297a3fd8b9cd8ee9b                                        91.9s
+ => => resolve quay.io/jupyter/minimal-notebook:afe30f0c9ad8@sha256:ea438114425ea79d893ec610460e636040270bdd79dba4a297a3fd8b9cd8ee9b                                         0.0s
+ => => sha256:ea438114425ea79d893ec610460e636040270bdd79dba4a297a3fd8b9cd8ee9b 772B / 772B                                                                                   0.0s
+ => => sha256:bc8daefb9978b7f23cfc73ae68e998e85ee72a68588997321b1697cb0b9926df 28.40MB / 28.40MB                                                                             1.7s
+ => => sha256:8482b65c23f2a1a154f31724258925270e17c6957a5dc01b744567082ace5ef1 5.53kB / 5.53kB                                                                               0.0s
+ => => sha256:8c505754308e1201af9d0286ad7e7801ebb63a389eeb7a6195a9b2bf375b7d71 689B / 689B                                                                                   0.4s
+ => => sha256:63f8ee0d51504c7f44d3dd989dde3f98f28f0d143a7fa468ca8d96df920db84b 14.97kB / 14.97kB                                                                             0.0s
+ => => sha256:2affa15da31d0d90543f0b875bd20e6b5884427a97d6a94747a5352c3ff60e47 8.70MB / 8.70MB                                                                               1.7s
+ => => sha256:b2aa79fdac7f6304856e5c4e8f35e6b63e5089925c36f61e2e5ecb0ae1773c4d 1.91kB / 1.91kB                                                                               1.7s
+ => => sha256:f168c5a7bb243597d828b96ba0dc01c52d90390b3232420a97ebf0cb8e6eb249 5.35kB / 5.35kB                                                                               2.0s
+ => => extracting sha256:bc8daefb9978b7f23cfc73ae68e998e85ee72a68588997321b1697cb0b9926df                                                                                    0.5s
+ => => sha256:a58bef9efef04a43ce3e562431503cc045d1e9bed1553b4f709bc3a6ccda75f8 280B / 280B                                                                                   2.0s
+ => => sha256:283cabde5a0ef71167b8667b602b87860fe7be6ce4790db003f94d1c34f7eb13 151B / 151B                                                                                   2.2s
+ => => sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 32B / 32B                                                                                     2.2s
+ => => sha256:d98cae6548418cca6281b015d4aa0fdff9ce887164af22f2075b995e04ea2db6 83.91MB / 83.91MB                                                                            22.9s
+ => => extracting sha256:2affa15da31d0d90543f0b875bd20e6b5884427a97d6a94747a5352c3ff60e47                                                                                    0.2s
+ => => sha256:7170b61623615ff33bab4c28ea370809f2eb74fe558a03d07b34b7d717ddcce6 4.46kB / 4.46kB                                                                               2.6s
+ => => sha256:3afcde32be9337c0e0e05b1f42e82c7b29aa59592bd1a1330b2ee22476c36f4b 181B / 181B                                                                                   2.7s
+ => => extracting sha256:8c505754308e1201af9d0286ad7e7801ebb63a389eeb7a6195a9b2bf375b7d71                                                                                    0.0s
+ => => extracting sha256:b2aa79fdac7f6304856e5c4e8f35e6b63e5089925c36f61e2e5ecb0ae1773c4d                                                                                    0.0s
+ => => extracting sha256:f168c5a7bb243597d828b96ba0dc01c52d90390b3232420a97ebf0cb8e6eb249                                                                                    0.0s
+ => => extracting sha256:283cabde5a0ef71167b8667b602b87860fe7be6ce4790db003f94d1c34f7eb13                                                                                    0.0s
+ => => extracting sha256:a58bef9efef04a43ce3e562431503cc045d1e9bed1553b4f709bc3a6ccda75f8                                                                                    0.0s
+ => => extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1                                                                                    0.0s
+ => => sha256:40ff4f15e29dec81a526c47fbf41fa88d5dfc4457568b69e26b91fc8439d4445 478B / 478B                                                                                   3.2s
+ => => sha256:df3ad85f0d7e2e88d2a914219163668b7f43add4e285c8e65b40bd0d4897a4c9 32.21MB / 32.21MB                                                                            23.6s
+ => => sha256:409eb99c42acaf5bf907f138daa85051bc776f58903c3ae297aa33578c6ad3c3 127.89MB / 127.89MB                                                                          64.6s
+ => => extracting sha256:d98cae6548418cca6281b015d4aa0fdff9ce887164af22f2075b995e04ea2db6                                                                                    2.1s
+ => => sha256:bdbbe074272ce27bbdb8b2fec4dff21121fac6ba2cd7541e055e66f0783750f2 1.17kB / 1.17kB                                                                              23.1s
+ => => sha256:cace5aa8cd6a6bcde8f364de9fb86939ad3f5e9277893d3be6902a7c0a33f6cc 1.66kB / 1.66kB                                                                              23.6s
+ => => sha256:89ff9d52e8d520e59378a0627d4cb86e4dcd5ee54ea929bf28dd2cb1e343b6a4 169.77MB / 169.77MB                                                                          86.2s
+ => => sha256:7da04cb0c16197dcc3f8701037322857c6711eb4ddc273f01390bcaaa354fd8f 1.67kB / 1.67kB                                                                              24.0s
+ => => sha256:ed2bf98008ca1f4709b485565a264d5292a96b1544230a468a74789893a4e3f1 1.47kB / 1.47kB                                                                              24.3s
+ => => sha256:7436b22796c164367ad7d7bcad47adc8a653332c9fa6ea5e2628fecb77411591 437B / 437B                                                                                  24.8s
+ => => sha256:a1a3e497aeb1c40e40322d6d2e5c7548b4f9ae1bbaf560bd8eb5decfcd363498 2.79kB / 2.79kB                                                                              25.2s
+ => => extracting sha256:7170b61623615ff33bab4c28ea370809f2eb74fe558a03d07b34b7d717ddcce6                                                                                    0.0s
+ => => extracting sha256:3afcde32be9337c0e0e05b1f42e82c7b29aa59592bd1a1330b2ee22476c36f4b                                                                                    0.0s
+ => => extracting sha256:40ff4f15e29dec81a526c47fbf41fa88d5dfc4457568b69e26b91fc8439d4445                                                                                    0.0s
+ => => extracting sha256:df3ad85f0d7e2e88d2a914219163668b7f43add4e285c8e65b40bd0d4897a4c9                                                                                    0.4s
+ => => extracting sha256:409eb99c42acaf5bf907f138daa85051bc776f58903c3ae297aa33578c6ad3c3                                                                                    3.7s
+ => => extracting sha256:bdbbe074272ce27bbdb8b2fec4dff21121fac6ba2cd7541e055e66f0783750f2                                                                                    0.0s
+ => => extracting sha256:cace5aa8cd6a6bcde8f364de9fb86939ad3f5e9277893d3be6902a7c0a33f6cc                                                                                    0.0s
+ => => extracting sha256:7da04cb0c16197dcc3f8701037322857c6711eb4ddc273f01390bcaaa354fd8f                                                                                    0.0s
+ => => extracting sha256:89ff9d52e8d520e59378a0627d4cb86e4dcd5ee54ea929bf28dd2cb1e343b6a4                                                                                    5.5s
+ => => extracting sha256:ed2bf98008ca1f4709b485565a264d5292a96b1544230a468a74789893a4e3f1                                                                                    0.0s
+ => => extracting sha256:7436b22796c164367ad7d7bcad47adc8a653332c9fa6ea5e2628fecb77411591                                                                                    0.0s
+ => => extracting sha256:a1a3e497aeb1c40e40322d6d2e5c7548b4f9ae1bbaf560bd8eb5decfcd363498                                                                                    0.0s
+ => exporting to image                                                                                                                                                       0.0s
+ => => exporting layers                                                                                                                                                      0.0s
+ => => writing image sha256:39e1eeb98dd5cb2e0148c712e308f20945bb6d22dbd61e3ba24223f2085a47f4                                                                                 0.0s
+ => => naming to docker.io/library/testing_cmds                                                                                                                              0.0s
+
+What's next:
+    View a summary of image vulnerabilities and recommendations → docker scout quickview 
+
+(base) dhcp-128-189-194-178:dsci522-dockerfile-practice abdulsafdar$ mamba --version
+mamba 1.5.11
+conda 24.9.2
+
+(base) dhcp-128-189-194-178:dsci522-dockerfile-practice abdulsafdar$ docker build --tag testing_cmds .
+[+] Building 1.2s (7/7) FINISHED                                                                                                                             docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                                         0.0s
+ => => transferring dockerfile: 139B                                                                                                                                         0.0s
+ => [internal] load metadata for quay.io/jupyter/minimal-notebook:afe30f0c9ad8                                                                                               1.1s
+ => [internal] load .dockerignore                                                                                                                                            0.0s
+ => => transferring context: 2B                                                                                                                                              0.0s
+ => [internal] load build context                                                                                                                                            0.0s
+ => => transferring context: 33.83kB                                                                                                                                         0.0s
+ => CACHED [1/2] FROM quay.io/jupyter/minimal-notebook:afe30f0c9ad8@sha256:ea438114425ea79d893ec610460e636040270bdd79dba4a297a3fd8b9cd8ee9b                                  0.0s
+ => [2/2] COPY conda-linux-64.lock /tmp/conda-linux-64.lock                                                                                                                  0.0s
+ => exporting to image                                                                                                                                                       0.0s
+ => => exporting layers                                                                                                                                                      0.0s
+ => => writing image sha256:41f109fb5cb25858d9459b33a3ab19d75360870a8da9d0ea67582d59083f380f                                                                                 0.0s
+ => => naming to docker.io/library/testing_cmds                                                                                                                              0.0s
+
+What's next:
+    View a summary of image vulnerabilities and recommendations → docker scout quickview 
+
+(base) dhcp-128-189-194-178:dsci522-dockerfile-practice abdulsafdar$ docker run --rm -it testing_cmds /bin/bash
+(base) jovyan@d51fb96e3934:~$ ls
+work
+(base) jovyan@d51fb96e3934:~$ cd /tmp/
+(base) jovyan@d51fb96e3934:/tmp$ ls
+conda-linux-64.lock
+(base) jovyan@d51fb96e3934:/tmp$ python
+Python 3.11.7 | packaged by conda-forge | (main, Dec 23 2023, 14:25:24) [GCC 12.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pandera
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'pandera'
+>>> exit()
+(base) jovyan@d51fb96e3934:/tmp$ mamba update --file conda-linux-64.lock
+
+Downloading and Extracting Packages:
+                                                                                                                                                                                  
+                                                                                                                                                                                  
+Downloading and Extracting Packages:                                                                                                                                              
+                                                                                                                                                                                  
+Preparing transaction: done                                                                                                                                                       
+Verifying transaction: done                                                                                                                                                       
+Executing transaction: done                                                                                                                                                       
+(base) jovyan@d51fb96e3934:/tmp$ python
+rosetta error: failed to open elf at /lib64/ld-linux-x86-64.so.2                                                                                                                  
+ Trace/breakpoint trap                                                                                                                                                            
+(base) jovyan@d51fb96e3934:/tmp$ python
+rosetta error: failed to open elf at /lib64/ld-linux-x86-64.so.2                                                                                                                  
+ Trace/breakpoint trap                                                                                                                                                            
+(base) jovyan@d51fb96e3934:/tmp$ python
+rosetta error: failed to open elf at /lib64/ld-linux-x86-64.so.2
+ Trace/breakpoint trap
+(base) jovyan@d51fb96e3934:/tmp$ 
+(base) jovyan@d51fb96e3934:/tmp$ ls
